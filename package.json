@@ -1,0 +1,50 @@
+{
+  "name": "body-reader",
+  "version": "1.0.0",
+  "description": "Lazy request body stream consumption.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test:server": "nodemon --exec \"ts-node tmp/server.ts\"",
+    "test": "jest"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexsasharegan/body-reader.git"
+  },
+  "author": "Alex Regan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexsasharegan/body-reader/issues"
+  },
+  "homepage": "https://github.com/alexsasharegan/body-reader#readme",
+  "devDependencies": {
+    "@types/jest": "^23.0.0",
+    "@types/node": "^10.3.0",
+    "axios": "^0.18.0",
+    "jest": "^23.1.0",
+    "nodemon": "^1.17.5",
+    "supertest": "^3.1.0",
+    "ts-jest": "^22.4.6",
+    "ts-node": "^6.0.5",
+    "typescript": "^2.9.1"
+  },
+  "dependencies": {
+    "fmt-bytes": "^1.0.2",
+    "safe-types": "^3.3.9"
+  }
+}
