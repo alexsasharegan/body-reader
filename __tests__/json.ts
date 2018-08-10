@@ -571,7 +571,6 @@ describe("Parser.Json()", () => {
 
 function createServer(readOptions: ReadOptions = {}) {
   return http.createServer(function(req, res) {
-    console.log(`http.createServer()`);
     Parser.Json.read(req, readOptions, result => {
       result.match({
         Err(err) {
