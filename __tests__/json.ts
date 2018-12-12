@@ -1,8 +1,8 @@
 import * as http from "http";
+// @ts-ignore
 import * as request from "supertest";
 import * as Bytes from "fmt-bytes";
 import * as Parser from "../src/index";
-import { HttpError } from "../src/error";
 import { ReadOptions } from "../src/options";
 
 describe("Parser.Json()", () => {
@@ -36,18 +36,15 @@ describe("Parser.Json()", () => {
   });
 
   describe("when JSON is invalid", () => {
-    beforeEach(() => {
-      this.server = createServer();
-    });
     it("should 422 for bad token", done => {
-      request(this.server)
+      request(createServer())
         .post("/")
         .set("Content-Type", "application/json")
         .send("{:")
         .expect(422, `malformed request`, done);
     });
     it("should 422 for incomplete", done => {
-      request(this.server)
+      request(createServer())
         .post("/")
         .set("Content-Type", "application/json")
         .send('{"user"')
@@ -586,14 +583,14 @@ function createServer(readOptions: ReadOptions = {}) {
   });
 }
 
-function parseError(str) {
-  try {
-    JSON.parse(str);
-    throw new SyntaxError("strict violation");
-  } catch (e) {
-    return e.message;
-  }
-}
+// function parseError(str) {
+//   try {
+//     JSON.parse(str);
+//     throw new SyntaxError("strict violation");
+//   } catch (e) {
+//     return e.message;
+//   }
+// }
 
 // function shouldContainInBody(str) {
 //   return function(res) {
